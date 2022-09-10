@@ -1,0 +1,23 @@
+
+{#! template for -> List of all the employes we have in DB #}
+{# when we search the /employe in URL -> index.html.twig is the default page will show up  #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %} Employes! {% endblock %}
+
+{% block body %}
+
+    <h1> List of the Employers </h1>
+
+    {# employes -> our variable in EmployeController.php in index() #}
+    {% for employe in employes %}
+        {# path('name-route', {id} we defined in the route path MUST be the same ) #}
+        <a class="link" href="{{ path('show_employe', {'id': employe.id}) }}"> {{employe}} </a><br>
+        <a class="btn btn-warning" href="{{ path('edit_employe', {'id':employe.id}) }}"> Edit </a>
+        <a class="btn btn-danger" href="{{ path('delete_employe', {'id':employe.id}) }}"> Delete </a><br><br>
+    {% endfor %}
+    <br>
+    <button><a class="btn bg-transparent" href="{{ path('add_employe') }}"> Add An Employer </a></button>
+
+{% endblock %}

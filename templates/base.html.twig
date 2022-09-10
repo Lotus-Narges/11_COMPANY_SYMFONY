@@ -5,15 +5,31 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+        {# it's in public folder that we find all our public files like css/ js/ ... #}
+            <link rel="styleSheet" href="{{asset('Css/style.css')}}">
+            {# asset() -> Automatically goes & check the public folder #}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+        
         {% endblock %}
+
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div id="container">
+            <nav>
+                <a class="link" href="{{path('app_entreprise')}}"> Entreprises </a><br>
+                <a class="link" href="{{path('app_employe')}}"> Employers </a><br>
+            </nav>
+            <hr>
+
+            {% block body %}
+                
+            {% endblock %}
+        </div>
     </body>
 </html>

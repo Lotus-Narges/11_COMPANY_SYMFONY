@@ -1,0 +1,32 @@
+{#! template for -> Details of a specific company (by id)#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Details of the Company{% endblock %}
+
+
+{% block body %}
+
+    {# comes from the __toString() in EntrepriseController.php #}
+    <h1> {{entreprise}} </h1>
+    
+    <p>
+    {# Siret: {{entreprise.siret}} <br> #}
+    Creation date: {{entreprise.dateCreation | date('d-m-Y')}} <br>
+    Address: {{entreprise.fullAddress}} <br>
+    {# We have this output from the method in Entity/Entreprise.php #}
+    </p>
+
+    <h2>List of the employers</h2>
+    {# In entreprise.php -> we have a property "private employes" -> We use it to find all the employers of the company #}
+    
+    {% if entreprise.employes | length() == 0 %}
+    {# entreprise(object).employes(collection) #}
+        <p> No employer in this company! </p>
+    {% else %}
+        {% for employe in entreprise.employes%}
+            <a class="link" href="{{path('show_employe', {'id':employe.id})}}"> {{employe}} </a><br>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

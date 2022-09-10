@@ -1,0 +1,34 @@
+
+{#! template for -> Details of an employe of a specific company (by id)#}
+
+{% extends 'base.html.twig' %}
+{# we need to heve 'base.html.twig' because it's based on base.html.twig #}
+
+{% block title %} Details of an Employer! {% endblock %}
+
+{% block body %}
+
+    {# comes from EmployeController.php -> we have __toString() #}
+    <h1> {{employe}} </h1>
+
+    <p>
+    First name: {{employe.prenom}} <br>
+    Last name: {{employe.nom}} <br>
+    {# concerting DateTime to string with twig native function #}
+
+    Birth date: {{employe.DateNaissance | date('d-m-Y')}} <br>
+    Age: {{employe.age}} years <br>
+    {# we created the function which calculate the age in controller/Entity/Employe.php 
+    When we name the method we create get/has/is.age -> It goes automatically search the methods which are called get/has/is.age
+    Each time symfony search to find a method -> it search them by their pre-fix #}
+
+    {# we create a link for the company #}
+    Company: <a class="link" href="{{path('show_entreprise', {'id':employe.entreprise.id}) }}"> {{employe.entreprise}} </a><br>
+    {# Information related to another table but we're able to get it -> __toString (Convert object to string) #}
+    {# If we didn't have __toString() -> Company: {{employe.entreprise.raisonSocial}} #}
+
+    Hiring date: {{employe.DateEmbauche | date('d-m-Y')}} <br>
+    </p>
+
+{% endblock %}
+

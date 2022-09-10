@@ -1,0 +1,24 @@
+
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#container{
+    width: 60%;
+    margin: auto;
+    padding: 50px 0 50px 0;
+}
+
+
+h1 {
+    color: rgb(239, 20, 93);
+    text-shadow: 3px 3px 3px pink;
+}
+
+.link {
+    color: black; 
+    text-shadow: 1px 1px 1px rgb(163, 220, 249); 
+}
+

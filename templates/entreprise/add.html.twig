@@ -1,0 +1,18 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %} Add a Company {% endblock %}
+
+{% block body %}
+
+    {# form() -> Twig native function to show a Form #}
+    {# The key value of association array in render() in EntrepriseController.php #}
+    {% if edit %}
+        <h1> Edit a Company </h1>
+    {% else %}
+        <h1> Add a Company </h1>
+    {% endif %}
+    
+    {{form(formAddEntreprise)}}
+
+{% endblock %}

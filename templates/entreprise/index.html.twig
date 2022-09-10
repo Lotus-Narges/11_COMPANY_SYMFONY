@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entreprise{% endblock %}
+
+
+{% block body %}
+
+    <h1> List of the Companies </h1>
+
+    {# entreprises -> our variable in EntrepriseController.php in index() #}
+    {% for entreprise in entreprises %}
+        {# path('name-route', {id} we defined in the route path MUST be the same ) #}
+        <a class="link" href="{{ path('show_entreprise', {'id': entreprise.id}) }}"> {{entreprise}} </a><br>
+        <a class="btn btn-warning" href="{{ path('edit_entreprise', {'id':entreprise.id}) }}"> Edit </a>
+        <a class="btn btn-danger" href="{{ path('delete_entreprise', {'id':entreprise.id}) }}"> Delete </a><br><br>
+
+    {% endfor %}
+    <br>
+    <button><a class="btn bg-transparent" href="{{ path('add_entreprise') }}"> Add A Company </a></button>
+
+  
+    {# {% for entreprise in entreprises %}
+        {{entreprise.raisonSocial ~ '!'}} <br>
+        {# {{entreprise.raisonSocial}} ({{entreprise.cp}} {{entreprise.ville}}) <br> #}
+    {# {% endfor %} #}
+
+{% endblock %}
